@@ -1,0 +1,150 @@
+According to the assignment, we followed the issues and came out the method as followings:
+
+The method we used is BFS(breadth first search). The main idea of BFS is to enumerate all the possible situations and eliminate the impossible ones and get the the best solution. In trial, we found that the basic BFS solution for this problem will cost large amount of time and the algorithm runs really slow, the reason is BFS enumerates all possible states and contains many repeating states. So we need to make some optimization for this basic solution.
+
+How to represent the state of the game?
+In python, we use 2 dimensions list to describe the pegs and disks and their states.
+The first dimension of the list is represented as pegs, we use numbers in the list to describe the size of the disks, the larger the number the larger the disk size.
+The second dimension is represented as state, it records all possible states.
+
+How to test end state:
+Firstly we set a specific end state, and we save every possible state in a list, once the the current state equals to  the end state, we break the loop and return the steps and path.
+
+How to implement one action?
+Normally we just pop the top element of a peg list, we use 2 loops to traverse moving disk and pegs to go through all situations, and judge which following peg can be laid on, we set hanoi rule(the lower disk must be bigger than the higher disk) as the limitation of moving, and at this point we make some optimizations, we add more constraints on the limitation: the lowest disk of the initial pegs can not be moved to other pegs except for the goal peg, the second lowest disk can not be moved to the goal peg since this will block the lowest one to move to the goal peg.
+
+How to avoid returning to a state that we have been in previously?
+We save every possible state distinctly, and test every possible state by comparing the current state with the state list, if the current state have already shown in the state list, we abandon the current state and start moving to next possible state and make judgement.
+
+
+
+The following are the situation examples of different numbers of pegs and disks:
+
+3 pegs 3 disks:
+Running time: 0.002942 Seconds
+
+
+The min steps to complete the Hanoi Tower is: 7
+
+The solution is:
+
+Move stack from peg 0 to peg 2
+Move stack from peg 0 to peg 1
+Move stack from peg 2 to peg 1
+Move stack from peg 0 to peg 2
+Move stack from peg 1 to peg 0
+Move stack from peg 1 to peg 2
+Move stack from peg 0 to peg 2
+
+and we lists all possible state:
+[[1, 2, 3], [0], [0]]
+[[2, 3], [1], [0]]
+[[2, 3], [0], [1]]
+[[3], [2], [1]]
+[[1, 3], [2], [0]]
+[[3], [1, 2], [0]]
+[[1, 3], [0], [2]]
+[[0], [1, 2], [3]]
+[[3], [1], [2]]
+[[3], [0], [1, 2]]
+[[1], [2], [3]]
+[[0], [2], [1, 3]]
+[[1], [0], [2, 3]]
+[[2], [0], [1, 3]]
+[[0], [1], [2, 3]]
+[[0], [0], [1, 2, 3]]
+[[1, 2], [0], [3]]
+[[2], [1], [3]]
+
+4 pegs 4 disks
+Running time: 0.0277909999999999 Seconds
+The min steps to complete the Hanoi Tower is: 9
+The solution is:
+Move stack from peg 0 to peg 1
+Move stack from peg 0 to peg 2
+Move stack from peg 1 to peg 2
+Move stack from peg 0 to peg 1
+Move stack from peg 0 to peg 3
+Move stack from peg 1 to peg 3
+Move stack from peg 2 to peg 0
+Move stack from peg 2 to peg 3
+Move stack from peg 0 to peg 3
+and we list all the possible states:
+[[1, 2, 3, 4], [0], [0], [0]]
+[[2, 3, 4], [1], [0], [0]]
+[[2, 3, 4], [0], [1], [0]]
+[[2, 3, 4], [0], [0], [1]]
+[[3, 4], [1], [2], [0]]
+[[3, 4], [1], [0], [2]]
+[[3, 4], [2], [1], [0]]
+[[3, 4], [0], [1], [2]]
+[[3, 4], [2], [0], [1]]
+[[3, 4], [0], [2], [1]]
+[[1, 3, 4], [0], [2], [0]]
+[[3, 4], [0], [1, 2], [0]]
+[[4], [1], [3], [2]]
+[[1, 3, 4], [0], [0], [2]]
+[[3, 4], [0], [0], [1, 2]]
+[[1, 3, 4], [2], [0], [0]]
+[[3, 4], [1, 2], [0], [0]]
+[[4], [3], [1], [2]]
+[[4], [2], [3], [1]]
+[[4], [3], [2], [1]]
+[[4], [3], [1, 2], [0]]
+[[1, 4], [0], [3], [2]]
+[[4], [0], [1, 3], [2]]
+[[4], [0], [3], [1, 2]]
+[[2, 4], [1], [3], [0]]
+[[4], [1], [2, 3], [0]]
+[[4], [3], [0], [1, 2]]
+[[4], [1, 2], [3], [0]]
+[[1, 4], [3], [0], [2]]
+[[4], [1, 3], [0], [2]]
+[[2, 4], [3], [1], [0]]
+[[4], [2, 3], [1], [0]]
+[[2, 4], [0], [3], [1]]
+[[4], [0], [2, 3], [1]]
+[[1, 4], [2], [3], [0]]
+[[4], [2], [1, 3], [0]]
+[[2, 4], [3], [0], [1]]
+[[4], [2, 3], [0], [1]]
+[[1, 4], [3], [2], [0]]
+[[4], [1, 3], [2], [0]]
+[[0], [3], [1, 2], [4]]
+[[4], [0], [1, 2], [3]]
+[[1, 4], [0], [2, 3], [0]]
+[[2, 4], [0], [1, 3], [0]]
+[[1, 2, 4], [0], [3], [0]]
+[[2, 4], [1], [0], [3]]
+[[0], [1], [2, 3], [4]]
+[[4], [0], [1, 2, 3], [0]]
+
+4 pegs 6 stacks:
+
+Please input the num of pegs:4
+Please input the num of stacks:6
+
+
+Running time: 1.3451959999999998 Seconds
+
+
+The min steps to complete the Hanoi Tower is: 17
+
+The solution is:
+
+Move stack from peg 0 to peg 1
+Move stack from peg 0 to peg 3
+Move stack from peg 0 to peg 2
+Move stack from peg 3 to peg 2
+Move stack from peg 0 to peg 3
+Move stack from peg 1 to peg 2
+Move stack from peg 0 to peg 1
+Move stack from peg 3 to peg 1
+Move stack from peg 0 to peg 3
+Move stack from peg 1 to peg 0
+Move stack from peg 1 to peg 3
+Move stack from peg 0 to peg 3
+Move stack from peg 2 to peg 0
+Move stack from peg 2 to peg 1
+Move stack from peg 2 to peg 3
+

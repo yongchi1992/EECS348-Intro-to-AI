@@ -1,0 +1,125 @@
+Parsing: What is the color of Block1
+Parse Suceeded:
+        Rule: What.2
+        Action: Ask
+        Statements: [['color', 'Block1', '?x']]
+
+Parsing: What is on Block1
+Parse Suceeded:
+        Rule: What.1
+        Action: Ask
+        Statements: [['on', '?x', 'Block1']]
+
+Parsing: What is under Block1
+Parse Suceeded:
+        Rule: What.1
+        Action: Ask
+        Statements: [['under', '?x', 'Block1']]
+
+Parsing: What is over Block1
+Parse Suceeded:
+        Rule: What.1
+        Action: Ask
+        Statements: [['over', '?x', 'Block1']]
+
+Parsing: What is in Box17
+Parse Suceeded:
+        Rule: What.1
+        Action: Ask
+        Statements: [['in', '?x', 'Box17']]
+
+Parsing: What is on the red block
+Parse Suceeded:
+        Rule: What.3
+        Action: Ask
+        Statements: [['on', '?x', '?objectDescriptionVariable'], ['color', '?objectDescriptionVariable', 'red'], ['inst', '?objectDescriptionVariable', 'block']]
+
+Parsing: What blocks are red
+Parse Suceeded:
+        Rule: What.4
+        Action: Ask
+        Statements: [['color', '?typeDecscriptionVariable', 'red'], ['inst', '?typeDecscriptionVariable', 'block']]
+
+Parsing: Which blocks are red
+Parse Suceeded:
+        Rule: Which.1
+        Action: Ask
+        Statements: [['color', '?typeDecscriptionVariable', 'red'], ['inst', '?typeDecscriptionVariable', 'block']]
+
+Parsing: Block72 is small
+Parse Suceeded:
+        Rule: Assert.2
+        Action: Assert
+        Statements: [['size', 'Block72', 'small']]
+
+Parsing: Block17 is a block
+Parse Suceeded:
+        Rule: Assert.3
+        Action: Assert
+        Statements: [['inst', 'Block17', 'block']]
+
+Parsing: Block17 is red
+Parse Suceeded:
+        Rule: Assert.2
+        Action: Assert
+        Statements: [['color', 'Block17', 'red']]
+
+Parsing: Block1 is on Block2
+Parse Suceeded:
+        Rule: Assert.4
+        Action: Assert
+        Statements: [['on', 'Block1', 'Block2']]
+
+Parsing: Block1 is on the red block
+Parse Suceeded:
+        Rule: Assert.5
+        Action: Assert
+        Statements: [['on', 'Block1', '?objectDescriptionVariable'], ['color', '?objectDescriptionVariable', 'red'], ['inst', '?objectDescriptionVariable', 'block']]
+
+Parsing: Put Block1 on Block2
+Parse Suceeded:
+        Rule: Do.1
+        Action: Direct
+        Statements: [['on', 'Block1', 'Block2']]
+
+Parsing: Put Block1 on the table
+Parse Suceeded:
+        Rule: Do.2
+        Action: Direct
+        Statements: [['on', 'Block1', 'table']]
+
+Parsing: Move Block2 to Block1
+Parse Suceeded:
+        Rule: Do.3
+        Action: Direct
+        Statements: [['on', 'Block1', 'Block2']]
+
+Parsing: Pick up the red block
+Parse Suceeded:
+        Rule: Do.4
+        Action: Direct
+        Statements: [['Holding', '?objectDescriptionVariable'], ['color', '?objectDescriptionVariable', 'red'], ['inst', '?objectDescriptionVariable', 'block']]
+
+Parsing: Empty the box
+Parse Suceeded:
+        Rule: Empty.1
+        Action: Direct
+        Statements: [['empty', '?typeDecscriptionVariable'], ['inst', '?typeDecscriptionVariable', 'box']]
+
+Parsing: Empty the red box
+Parse Suceeded:
+        Rule: Empty.2
+        Action: Direct
+        Statements: [['empty', '?objectDescriptionVariable'], ['color', '?objectDescriptionVariable', 'red'], ['inst', '?objectDescriptionVariable', 'box']]
+
+Parsing: Clear the red blocks
+Parse Suceeded:
+        Rule: Do.6
+        Action: Direct
+        Statements: [['clear', '?objectDescriptionVariable'], ['color', '?objectDescriptionVariable', 'red'], ['inst', '?objectDescriptionVariable', 'block']]
+
+Parsing: Stack the large block onto Block2
+Parse Suceeded:
+        Rule: Do.7
+        Action: Direct
+        Statements: [['on', '?objectDescriptionVariable', 'Block2'], ['size', '?objectDescriptionVariable', 'large'], ['inst', '?objectDescriptionVariable', 'block']]
